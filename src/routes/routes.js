@@ -1,0 +1,26 @@
+import express from "express";
+import { getUsers, login, register, updateUserStatus } from "../controllers/Register.js";
+import { createJob, getJobs, updateJobStatus } from "../controllers/job.js";
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.send("Welcome to the API");
+}
+);
+//auth
+router.post('/register', register)
+router.post('/login', login)
+
+//job
+router.post('/createJob', createJob)
+router.get('/getJobs', getJobs)
+
+//users
+router.get('/getUsers', getUsers)
+//update user status
+router.post('/updateUser/:id', updateUserStatus)
+
+//job Status
+router.post('/updateJobStatus', updateJobStatus)
+
+export default router;

@@ -61,8 +61,7 @@ export const getUsers = async (req, res) => {
 
 //update status of user
 export const updateUserStatus = async (req, res) => {
-  const { id } = req.params;
-  const { status } = req.body;
+  const { status, id } = req.body;
   if (!id) {
     return res.status(400).json({ message: "Please fill in all fields" })
   }

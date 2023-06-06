@@ -28,14 +28,13 @@ export const updateJobStatus = async (req, res) => {
   }
 
   try {
-    const Job = await Job.findById(id);
-    Job.status = status;
-    await Job.save();
-    res.status(201).json(Job);
+    const Job1 = await Job.findById(id);
+    Job1.status = status;
+    await Job1.save();
+    res.status(201).json(Job1);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
-
 
 }
 

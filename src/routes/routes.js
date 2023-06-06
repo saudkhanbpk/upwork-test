@@ -18,7 +18,7 @@ router.get('/getJobs', getJobs)
 //users
 router.get('/getUsers', getUsers)
 //update user status
-router.post('/updateUser/:id', updateUserStatus)
+router.post('/updateUser', updateUserStatus)
 
 //job Status
 router.post('/updateJobStatus', updateJobStatus)

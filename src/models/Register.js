@@ -28,7 +28,7 @@ const RegisterSchema = new mongoose.Schema({
   status: {
     type: String,
     default: "Pending",
-    enum: ["Pending", "Confirmed"]
+    enum: ["Pending", "Confirmed","Suspend"]
 
   }
 

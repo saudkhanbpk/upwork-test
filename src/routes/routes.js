@@ -1,6 +1,6 @@
 import express from "express";
 import { getUsers, login, register, updateUserStatus } from "../controllers/Register.js";
-import { createJob, getJobs, updateJobStatus } from "../controllers/job.js";
+import { appliedBy, createJob, getJobs, updateJobStatus } from "../controllers/job.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -22,5 +22,7 @@ router.post('/updateUser', updateUserStatus)
 
 //job Status
 router.post('/updateJobStatus', updateJobStatus)
+//applied by
+router.post('/appliedBy', appliedBy)
 
 export default router;

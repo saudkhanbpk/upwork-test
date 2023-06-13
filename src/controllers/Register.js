@@ -12,12 +12,9 @@ export const register = async (req, res) => {
 
     const hashPassword = await bcrypt.hash(password, 12)
     const newUser = new Register({
-      fullName,
-      email,
-      phone,
+    ...req.body,
       password: hashPassword,
-      currentJobTitle,
-      address
+     
     }
     )
     await newUser.save()
@@ -33,8 +30,13 @@ export const login = async (req, res) => {
     return res.status(400).json({ msg: "Please Enter All Fields" })
   }
   let user = await Register.findOne({ email })
-  if (!user)
-    return res.status(404).json({ msg: "User Not Found" })
+  console.log(user)
+  if (!user){
+    return res.status(404).json({ msg: "User Not Found" })}
+    if(user.status=="Pending"|| user.status== "Suspend")
+    {
+      return res.status(400).json({ msg: "you are not able to login untill the admin will conform you" })
+    }
   try {
     let isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) {

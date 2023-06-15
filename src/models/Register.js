@@ -30,6 +30,11 @@ const RegisterSchema = new mongoose.Schema({
     default: "Pending",
     enum: ["Pending", "Confirmed","Suspend"]
 
+  },
+  role: {
+    type: String,
+    default: "User", // Set the default role value as "User"
+    enum: ["User", "Admin",] // Define the available roles
   }
 
 });

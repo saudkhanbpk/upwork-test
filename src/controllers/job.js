@@ -59,7 +59,23 @@ export const appliedBy = async (req, res) => {
 };
 
 
+//get the job with userId
+export const getJobWithUserId = async (req, res) => {
+  const { userId } = req.body;
+  if (!userId) {
+    return res.status(400).json({ message: "Please fill in all fields" });
+  }
+  try {
+    const jobs = await Job.find({ "appliedBy.userId": userId });
+    res.status(200).json(jobs);
+  }
+  catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 
+
+
+}
 
 
 

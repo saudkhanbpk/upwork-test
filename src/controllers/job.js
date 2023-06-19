@@ -40,7 +40,7 @@ export const updateJobStatus = async (req, res) => {
 
 //applied by
 export const appliedBy = async (req, res) => {
-  const { userId, status, jobId } = req.body;
+  const { userId, status, jobId, applierName } = req.body;
   if (!userId || !jobId) {
     return res.status(400).json({ message: "Please fill in all fields" });
   }
@@ -50,6 +50,7 @@ export const appliedBy = async (req, res) => {
     if (!job.appliedBy.userId.includes(userId)) {
       job.appliedBy.userId.push(userId); // Push userId to the userId array
     }
+    job.appliedBy.applierName.push(applierName); // Push applierName to the applierName array
     job.appliedBy.status = status; // Update the status
     await job.save();
     res.status(201).json(job);

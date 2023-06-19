@@ -32,8 +32,11 @@ const JobSchema = new mongoose.Schema({
     status: {
       type: Boolean,
       default: false
+    },
+    applierName: {
+      type: Array,
+      default: []
     }
-
   },
 });
 
